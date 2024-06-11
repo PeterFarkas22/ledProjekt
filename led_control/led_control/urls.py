@@ -15,9 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import toggle_led, cleanup
+from control.views import toggle_led
 
 urlpatterns = [
     path('toggle/', toggle_led, name='toggle_led'),
-    path('cleanup/', cleanup, name='cleanup'),
 ]
