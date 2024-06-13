@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LED Control</title>
+    <title>Kapcsoló vezérlés</title>
 </head>
 <body>
-    <h1>LED Control</h1>
-    <form method="post">
+    <form method="POST" action="{% url 'turn_on' %}">
         {% csrf_token %}
-        <button type="submit" name="on">Turn On</button>
-        <button type="submit" name="off">Turn Off</button>
+        <button type="submit">On</button>
+    </form>
+    <form method="POST" action="{% url 'turn_off' %}">
+        {% csrf_token %}
+        <button type="submit">Off</button>
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <h1>Motor vezérlés<h1>
+    <form method="POST" action="{% url 'motor' %}">
+        {% csrf_token %}
+        <input type="number" name="angle" id="angle" min="-90" max="90">
+        <button type="submit">Send</button>
     </form>
 </body>
 </html>
