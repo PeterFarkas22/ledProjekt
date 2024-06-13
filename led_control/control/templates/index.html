@@ -16,12 +16,5 @@
     {% if message %}
         <p>{{ message }}</p>
     {% endif %}
-
-    <h1>Motor vezérlés<h1>
-    <form method="POST" action="{% url 'motor' %}">
-        {% csrf_token %}
-        <input type="number" name="angle" id="angle" min="-90" max="90">
-        <button type="submit">Send</button>
-    </form>
 </body>
 </html>
