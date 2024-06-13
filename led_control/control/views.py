@@ -36,19 +36,4 @@ def turn_off(request):
     
     return render(request, 'index.html', {'message': message})
 
-servo = AngularServo(SERVO_GPIO_PIN, min_pulse_width=0.0006, max_pulse_width=0.0023)
 
-def motor(request):
-    template = 'index.html'
-    context = {}
-    
-    if request.method == 'POST':
-        angle = request.POST.get('angle')
-        try:
-            angle = int(angle)
-            servo.angle = angle
-            context['message'] = f'Servo moved to {angle} degrees.'
-        except ValueError:
-            context['message'] = 'Invalid angle. Please enter a number.'
-
-    return render(request, template, context)
