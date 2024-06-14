@@ -7,16 +7,16 @@ LED_GPIO_PIN = 17
 SERVO_GPIO_PIN = 18
 
 def set_gpio_value(chip_name, line_number, value):
-    chip = gpiod.Chip(chip_name)
+    chip = gpio.Chip(chip_name)
     line = chip.get_line(line_number)
     try:
-        line.request(consumer="gpioset", type=gpiod.LINE_REQ_DIR_OUT)
+        line.request(consumer="gpioset", type=gpio.LINE_REQ_DIR_OUT)
         line.set_value(value)
     finally:
         line.release()
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'indextemplate.html')
 
 def turn_on(request):
     try:
@@ -25,7 +25,7 @@ def turn_on(request):
     except Exception as e:
         message = f"Hiba: {e}"
     
-    return render(request, 'index.html', {'message': message})
+    return render(request, 'indextemplate.html', {'message': message})
 
 def turn_off(request):
     try:
@@ -34,6 +34,6 @@ def turn_off(request):
     except Exception as e:
         message = f"Hiba: {e}"
     
-    return render(request, 'index.html', {'message': message})
+    return render(request, 'indextemplate.html', {'message': message})
 
 
