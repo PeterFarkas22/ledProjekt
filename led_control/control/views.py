@@ -16,7 +16,7 @@ def set_gpio_value(chip_name, line_number, value):
         line.release()
 
 def index(request):
-    return render(request, 'indextemplate.html')
+    return render(request, 'index.html')
 
 def turn_on(request):
     try:
@@ -25,7 +25,7 @@ def turn_on(request):
     except Exception as e:
         message = f"Hiba: {e}"
     
-    return render(request, 'indextemplate.html', {'message': message})
+    return render(request, 'index.html', {'message': message})
 
 def turn_off(request):
     try:
@@ -34,6 +34,6 @@ def turn_off(request):
     except Exception as e:
         message = f"Hiba: {e}"
     
-    return render(request, 'indextemplate.html', {'message': message})
+    return render(request, 'index.html', {'message': message})
 
 
